@@ -4,9 +4,37 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/styles.scss" />
     <title>PopCorn APP</title>
   </head>
   <body>
-    popcorn it
+    <header>
+      <span class="logo">POPCORN</span>
+      <nav>
+        <input class="searchBar" placeholder="Rechercher un film" type="text" />
+        <ul>
+          <li>
+            <a href="#"
+              ><img
+                class="nav__icons"
+                src="./assets/icons/icons8-favorite-50.png"
+                alt="favorite"
+            /></a>
+          </li>
+          <li>
+            <a href="#">
+              <img
+                class="nav__icons"
+                src="./assets/icons/icons8-user-50.png"
+                alt="Acccount"
+              />
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <section class="highlight"></section>
+    <section class="most__popular"></section>
+    <script src="scripts/app.js"></script>
   </body>
 </html>
