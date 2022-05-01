@@ -1,11 +1,11 @@
 const API_URL = "https://api.themoviedb.org/3";
 const IMAGES_URL = "https://image.tmdb.org/t/p/w154";
 const API_KEY = "ac8ffc0eba4faf52fa1a6b66f2ea86e0";
-const FAMILY_MOVIES_ID = "10751";
+//const FAMILY_MOVIES_ID = "10751";
+const FAMILY_MOVIES_ID = "16";
 
 const $most_popular = document.querySelector(".most__popular");
-
-// https://api.themoviedb.org/3 /discover/movie ?api_key=ac8ffc0eba4faf52fa1a6b66f2ea86e0 &with_genres=10751 &sort_by=popularity.desc
+const $highlight = document.querySelector(".highlight");
 
 function getMoviesByGender(genderId) {
   fetch(
@@ -21,6 +21,26 @@ function showMovies(movies) {
     //$count.innerText = "Aucun résultat, désolé !";
     return;
   }
+
+  const highlight = movies.results[0];
+  $highlight.style.backgroundImage = `
+  linear-gradient(to bottom, #f5f6fc00, #000321),url(
+    https://image.tmdb.org/t/p/w1280${highlight.backdrop_path}
+  )`;
+
+  $highlight.innerHTML = `
+  <div class="highlight__content">
+        <h1>${highlight.original_title}</h1>;
+        <div>
+            <span>TMDB: ${highlight.vote_average}</span>
+            <span>${highlight.release_date}</span>
+        </div>
+        <P>${highlight.overview}</P>
+        <buttton>Plus d'info</buttton>
+        <buttton>Ajouter au favoris</buttton>
+  </div>`;
+
+  //$highlight.appendChild($highlight_content);
 
   let $title = document.createElement("h2");
   $title.textContent = "Populaires";

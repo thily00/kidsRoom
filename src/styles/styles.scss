@@ -39,8 +39,15 @@ nav {
   }
 }
 
+.highlight {
+  height: 75vh;
+  background-size: cover;
+  background-position: center;
+}
+
 .most__popular {
   background-color: var(--primary-bg-color);
+  padding: 10px;
 
   .movie__list {
     display: flex;
