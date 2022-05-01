@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/thily00/popcornApp#readme",
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.5.0",
     "parcel": "^2.5.0"
   }
 }
