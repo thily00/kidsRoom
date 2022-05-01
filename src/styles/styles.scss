@@ -38,3 +38,24 @@ nav {
     }
   }
 }
+
+.most__popular {
+  background-color: var(--primary-bg-color);
+
+  .movie__list {
+    display: flex;
+    gap: 10px;
+    overflow-x: scroll;
+  }
+
+  .movie {
+  }
+
+  .movie__name {
+    color: var(--white);
+  }
+
+  .movie__releaseDate {
+    color: gray;
+  }
+}
