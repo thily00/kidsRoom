@@ -28,7 +28,7 @@ const compagnies = [
   {
     compagnyName: "DreamWorks Animation",
     compagnieId: "521",
-    imageUrl: "dreamworks",
+    imageUrl: "dreamorks",
   },
   {
     compagnyName: "Warner Bros. Animation",

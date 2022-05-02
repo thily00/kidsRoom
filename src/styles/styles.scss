@@ -45,9 +45,30 @@ nav {
   background-position: center;
 }
 
+.studios {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary-bg-color);
+  padding: 10px 50px;
+  gap: 15;
+
+  .studio {
+    cursor: pointer;
+    width: 100%;
+    height: 80px;
+    border: 1px solid #272335;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    box-shadow: 3px 1px 5px 1px #040727;
+  }
+}
+
 .movies__container {
   background-color: var(--primary-bg-color);
-  padding: 10px;
+  padding: 10px 50px;
 
   .movie__list {
     display: flex;
