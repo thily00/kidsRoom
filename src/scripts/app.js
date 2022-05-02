@@ -1,55 +1,127 @@
+import * as studios from "../assets/logos/*.png";
+
 const API_URL = "https://api.themoviedb.org/3";
 const IMAGES_URL = "https://image.tmdb.org/t/p/w154";
 const API_KEY = "ac8ffc0eba4faf52fa1a6b66f2ea86e0";
-//const FAMILY_MOVIES_ID = "10751";
-const FAMILY_MOVIES_ID = "16";
+const ANIMATION_MOVIES_IDS = "16,10751";
 
-const $most_popular = document.querySelector(".most__popular");
+const $movies_container = document.querySelectorAll(".movies__container");
 const $highlight = document.querySelector(".highlight");
+const $studios = document.querySelector(".studios");
 
-function getMoviesByGender(genderId) {
+const compagnies = [
+  {
+    compagnyName: "Walt Disney Pictures",
+    compagnieId: "2",
+    imageUrl: "disney",
+  },
+  {
+    compagnyName: "Pixar",
+    compagnieId: "3",
+    imageUrl: "pixar",
+  },
+  {
+    compagnyName: "Marvel Entertainment",
+    compagnieId: "7505",
+    imageUrl: "marvel",
+  },
+  {
+    compagnyName: "DreamWorks Animation",
+    compagnieId: "521",
+    imageUrl: "dreamorks",
+  },
+  {
+    compagnyName: "Warner Bros. Animation",
+    compagnieId: "2785",
+    imageUrl: "warnerbros",
+  },
+];
+
+let showStudios = function () {
+  console.log(compagnies);
+  compagnies.forEach(function (compagnie) {
+    let studio = document.createElement("div");
+    studio.setAttribute("class", "studio");
+    let studioImg = document.createElement("img");
+    studioImg.src = studios[compagnie.imageUrl];
+    studioImg.style.width = "100px";
+    studio.appendChild(studioImg);
+    // studioImg.setAttribute(
+    //   "src",
+    //   images[compagnie.imageUrl]
+    //   //   require(`./assets/logos/${}`)
+    // );
+    // studio.appendChild(studioImg);
+    // studio.innerHTML = `
+    // <img src="./assets/logos/${compagnie.imageUrl}" alt="${compagnie.compagnyName}">
+    // `;
+    $studios.appendChild(studio);
+  });
+};
+
+function getMoviesReleasedInThisYear(genderId) {
+  let year = new Date().getFullYear();
+  fetch(
+    `${API_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genderId}&primary_release_year=${year}`
+  )
+    .then((response) => response.json())
+    .then((response) => showMovies(response, 0));
+}
+
+function getMostPopularMovies(genderId) {
   fetch(
     `${API_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genderId}&sort_by=popularity.desc`
   )
     .then((response) => response.json())
-    .then((response) => showMovies(response));
+    .then((response) => handleMovies(response));
 }
 
-function showMovies(movies) {
+function getMostPopularTVShow(genderId) {
+  fetch(
+    `${API_URL}/discover/tv?api_key=${API_KEY}&with_genres=${genderId}&sort_by=popularity.desc`
+  )
+    .then((response) => response.json())
+    .then((response) => showMovies(response, 2));
+}
+
+let handleMovies = (movies) => {
   console.log(movies);
   if (movies.total_results === 0) {
     //$count.innerText = "Aucun résultat, désolé !";
     return;
   }
+  showHighlight(movies.results[0]);
+  showMovies(movies, 1);
+};
 
-  const highlight = movies.results[0];
+let showHighlight = function (movie) {
   $highlight.style.backgroundImage = `
-  linear-gradient(to bottom, #f5f6fc00, #000321),url(
-    https://image.tmdb.org/t/p/w1280${highlight.backdrop_path}
-  )`;
-
+    linear-gradient(to bottom, #f5f6fc00, #000321),url(
+        https://image.tmdb.org/t/p/w1280${movie.backdrop_path}
+    )`;
   $highlight.innerHTML = `
-  <div class="highlight__content">
-        <h1>${highlight.original_title}</h1>;
-        <div>
-            <span>TMDB: ${highlight.vote_average}</span>
-            <span>${highlight.release_date}</span>
-        </div>
-        <P>${highlight.overview}</P>
-        <buttton>Plus d'info</buttton>
-        <buttton>Ajouter au favoris</buttton>
-  </div>`;
+    <div class="highlight__content">
+            <h1>${movie.original_title}</h1>;
+            <div>
+                <span>TMDB: ${movie.vote_average}</span>
+                <span>${movie.release_date}</span>
+            </div>
+            <P>${movie.overview}</P>
+            <buttton>Plus d'info</buttton>
+            <buttton>Ajouter au favoris</buttton>
+    </div>`;
+};
 
-  //$highlight.appendChild($highlight_content);
-
+function showMovies(movies, i) {
   let $title = document.createElement("h2");
-  $title.textContent = "Populaires";
+  $title.textContent = "Animation";
 
   let $list = document.createElement("div");
   $list.setAttribute("class", "movie__list");
 
   movies.results.forEach(function (movie) {
     const div = document.createElement("div");
+    div.setAttribute("class", "movie");
     const img = document.createElement("img");
     const h2 = document.createElement("h2");
     const span = document.createElement("span");
@@ -64,8 +136,11 @@ function showMovies(movies) {
 
     $list.appendChild(div);
   });
-  $most_popular.appendChild($title);
-  $most_popular.appendChild($list);
+  $movies_container[i].appendChild($title);
+  $movies_container[i].appendChild($list);
 }
 
-getMoviesByGender(FAMILY_MOVIES_ID);
+showStudios();
+getMostPopularMovies(ANIMATION_MOVIES_IDS);
+getMoviesReleasedInThisYear(ANIMATION_MOVIES_IDS);
+getMostPopularTVShow(ANIMATION_MOVIES_IDS);
