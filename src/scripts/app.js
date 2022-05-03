@@ -1,12 +1,25 @@
+//TMDB variables
+const API_URL = "https://api.themoviedb.org/3";
+const IMAGES_URL = "https://image.tmdb.org/t/p";
+const API_KEY = "ac8ffc0eba4faf52fa1a6b66f2ea86e0";
+const ANIMATION_MOVIES_IDS = "16,10751";
+
+//navbar variables
 const $navbar = document.querySelector("header nav");
 const $searchIcon = document.querySelector(".nav__searchIcon");
 const $searxhInput = document.querySelector(".nav__searchBar");
+
+//highlight Variables
+const $highlight = document.querySelector(".highlight");
+import horlogeIcon from "../assets/icons/horloge.svg";
+import playIcon from "../assets/icons/play.png";
 
 //Toggle searchbar
 $searchIcon.addEventListener("click", () => {
   $searxhInput.classList.toggle("active");
 });
 
+//handle navbar background color on different screen
 window.addEventListener("scroll", () => {
   if (window.innerWidth >= 600) {
     if (window.scrollY >= 33) {
@@ -19,15 +32,71 @@ window.addEventListener("scroll", () => {
   }
 });
 
-import * as studios from "../assets/logos/*.png";
+let getMovies = (categorie, genderId) => {
+  fetch(
+    `${API_URL}/discover/${categorie}?api_key=${API_KEY}&with_genres=${genderId}&sort_by=popularity.desc`
+  )
+    .then((response) => response.json())
+    .then((response) => handleMovies(response));
+};
 
-const API_URL = "https://api.themoviedb.org/3";
-const IMAGES_URL = "https://image.tmdb.org/t/p/w154";
-const API_KEY = "ac8ffc0eba4faf52fa1a6b66f2ea86e0";
-const ANIMATION_MOVIES_IDS = "16,10751";
+let getMovie = async (id) => {
+  return await fetch(
+    `${API_URL}/movie/${id}?api_key=${API_KEY}&language=en-US&append_to_response=videos`
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((responseData) => {
+      return responseData;
+    });
+};
+
+let handleMovies = (movies) => {
+  console.log(movies);
+  if (movies.total_results === 0) {
+    return;
+  }
+  showHighlight(movies.results[0].id);
+  //showMovies(movies, 1);
+};
+
+let showHighlight = (movieId) => {
+  getMovie(movieId).then((movie) => {
+    console.log(movie);
+    $highlight.style.background = `rgba(18,31,68,0.7) url( ${IMAGES_URL}/w1280${movie.backdrop_path} )`;
+    $highlight.style.backgroundPosition = "center";
+    $highlight.style.backgroundSize = "cover";
+
+    let genders = movie.genres.map((genre) => {
+      return `<span class="highlight__gender"> ${genre.name}</span>`;
+    });
+
+    $highlight.innerHTML = `
+    <div class="highlight__content">
+        <img src="${IMAGES_URL}/w154${movie.poster_path}" alt="${movie.title}">
+        <span class="highlight__releasedYear">
+        ${new Date(movie.release_date).getFullYear()}
+        </span>
+        <h1 class="highlight__title">${movie.original_title}</h1>
+        <div class="highlight__genders">
+          ${genders}
+        </div>
+        <P class="highlight__overview">${movie.overview}</P>
+        <div class="highlight__additionalInfo">
+          <span>
+            <img src="${horlogeIcon}" alt="horloge icon"> ${movie.runtime}
+          </span>
+          <span>TMDB:${movie.vote_average}/10</span>
+        </div>
+        <buttton class="highlight__btn"> 
+          <img src="${playIcon}" alt="play icon">  Bande annonce
+        </buttton>
+      </div>`;
+  });
+};
 
 const $movies_container = document.querySelectorAll(".movies__container");
-const $highlight = document.querySelector(".highlight");
 const $studios = document.querySelector(".studios");
 
 const compagnies = [
@@ -89,52 +158,6 @@ function getMoviesReleasedInThisYear(genderId) {
     .then((response) => showMovies(response, 0));
 }
 
-function getMostPopularMovies(genderId) {
-  fetch(
-    `${API_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genderId}&sort_by=popularity.desc`
-  )
-    .then((response) => response.json())
-    .then((response) => handleMovies(response));
-}
-
-function getMostPopularTVShow(genderId) {
-  fetch(
-    `${API_URL}/discover/tv?api_key=${API_KEY}&with_genres=${genderId}&sort_by=popularity.desc`
-  )
-    .then((response) => response.json())
-    .then((response) => showMovies(response, 2));
-}
-
-let handleMovies = (movies) => {
-  console.log(movies);
-  if (movies.total_results === 0) {
-    //$count.innerText = "Aucun résultat, désolé !";
-    return;
-  }
-  showHighlight(movies.results[0]);
-  showMovies(movies, 1);
-};
-
-let showHighlight = function (movie) {
-  // $highlight.style.backgroundImage = `
-  //   linear-gradient(to bottom, #f5f6fc00, #000321),url(
-  //       https://image.tmdb.org/t/p/w1280${movie.backdrop_path}
-  //   )`;
-
-  $highlight.style.background = `rgba(18,31,68,0.7) url( https://image.tmdb.org/t/p/w1280${movie.backdrop_path} )`;
-  $highlight.innerHTML = `
-    <div class="highlight__content">
-            <h1>${movie.original_title}</h1>;
-            <div>
-                <span>TMDB: ${movie.vote_average}</span>
-                <span>${movie.release_date}</span>
-            </div>
-            <P>${movie.overview}</P>
-            <buttton>Plus d'info</buttton>
-            <buttton>Ajouter au favoris</buttton>
-    </div>`;
-};
-
 function showMovies(movies, i) {
   let $title = document.createElement("h2");
   $title.textContent = "Animation";
@@ -163,7 +186,7 @@ function showMovies(movies, i) {
   $movies_container[i].appendChild($list);
 }
 
-showStudios();
-getMostPopularMovies(ANIMATION_MOVIES_IDS);
-getMoviesReleasedInThisYear(ANIMATION_MOVIES_IDS);
-getMostPopularTVShow(ANIMATION_MOVIES_IDS);
+//showStudios();
+getMovies("movie", ANIMATION_MOVIES_IDS);
+//getMoviesReleasedInThisYear(ANIMATION_MOVIES_IDS);
+//getMostPopularTVShow(ANIMATION_MOVIES_IDS);

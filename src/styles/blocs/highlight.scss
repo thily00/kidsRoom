@@ -1,0 +1,58 @@
+.highlight {
+  width: 100%;
+  height: 85vh;
+  background-blend-mode: darken;
+  color: white;
+
+  .highlight__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 70px 10px 0px 10px;
+
+    .highlight__releasedYear {
+      margin-top: 15px;
+    }
+
+    .highlight__title {
+      font-size: 32px;
+      text-align: center;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .highlight__genders {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 15px;
+    }
+
+    .highlight__gender {
+      font-size: 12px;
+    }
+
+    .highlight__overview {
+      display: none;
+    }
+
+    .highlight__additionalInfo {
+      display: none;
+    }
+
+    .highlight__btn {
+      margin-top: 15px;
+      background-color: #ea5e6c;
+      border: none;
+      border-radius: 50px;
+      color: white;
+      padding: 8px 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      font-size: 16px;
+    }
+  }
+}
