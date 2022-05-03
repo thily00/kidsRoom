@@ -4,6 +4,8 @@ const IMAGES_URL = "https://image.tmdb.org/t/p";
 const API_KEY = "ac8ffc0eba4faf52fa1a6b66f2ea86e0";
 const ANIMATION_MOVIES_IDS = "16,10751";
 
+const body = document.querySelector("body");
+
 //navbar variables
 const $navbar = document.querySelector("header nav");
 const $searchIcon = document.querySelector(".nav__searchIcon");
@@ -75,9 +77,17 @@ let showHighlight = (movieId) => {
       return `<span class="highlight__gender"> ${genre.name}</span>`;
     });
 
+    let duration = (runtime) => {
+      let nHours = Math.floor(runtime / 60);
+      let nMin = runtime % 60;
+      return `${nHours}h : ${nMin} mn`;
+    };
+
     $highlight.innerHTML = `
     <div class="highlight__content">
-        <img src="${IMAGES_URL}/w154${movie.poster_path}" alt="${movie.title}">
+        <img class="highlight__contentPoster" src="${IMAGES_URL}/w500${
+      movie.poster_path
+    }" alt="${movie.title}">
         <div class="highlight__info">
         <span class="highlight__releasedYear">
         ${new Date(movie.release_date).getFullYear()}
@@ -88,68 +98,21 @@ let showHighlight = (movieId) => {
         </div>
         <P class="highlight__overview">${movie.overview}</P>
         <div class="highlight__additionalInfo">
-          <span>
-            <img src="${horlogeIcon}" alt="horloge icon"> ${movie.runtime}
+          <span class="highlight__duration">
+            <img src="${horlogeIcon}" alt="horloge icon"> 
+            ${duration(movie.runtime)}
           </span>
-          <span>TMDB:${movie.vote_average}/10</span>
+          <span class="highlight__rate">TMDB:${movie.vote_average}/10</span>
         </div>
         <buttton class="highlight__btn"> 
           <img src="${playIcon}" alt="play icon">  Bande annonce
         </buttton>
         </div>
       </div>`;
-  });
-};
-
-const $studios = document.querySelector(".studios");
-
-const compagnies = [
-  {
-    compagnyName: "Walt Disney Pictures",
-    compagnieId: "2",
-    imageUrl: "disney",
-  },
-  {
-    compagnyName: "Pixar",
-    compagnieId: "3",
-    imageUrl: "pixar",
-  },
-  {
-    compagnyName: "Marvel Entertainment",
-    compagnieId: "7505",
-    imageUrl: "marvel",
-  },
-  {
-    compagnyName: "DreamWorks Animation",
-    compagnieId: "521",
-    imageUrl: "dreamorks",
-  },
-  {
-    compagnyName: "Warner Bros. Animation",
-    compagnieId: "2785",
-    imageUrl: "warnerbros",
-  },
-];
-
-let showStudios = function () {
-  console.log(compagnies);
-  compagnies.forEach(function (compagnie) {
-    let studio = document.createElement("div");
-    studio.setAttribute("class", "studio");
-    let studioImg = document.createElement("img");
-    studioImg.src = studios[compagnie.imageUrl];
-    studioImg.style.width = "100px";
-    studio.appendChild(studioImg);
-    // studioImg.setAttribute(
-    //   "src",
-    //   images[compagnie.imageUrl]
-    //   //   require(`./assets/logos/${}`)
-    // );
-    // studio.appendChild(studioImg);
-    // studio.innerHTML = `
-    // <img src="./assets/logos/${compagnie.imageUrl}" alt="${compagnie.compagnyName}">
-    // `;
-    $studios.appendChild(studio);
+    const $highlight__btn = document.querySelector(".highlight__btn");
+    $highlight__btn.addEventListener("click", () => {
+      showtrailer(movie.videos.results[0].key);
+    });
   });
 };
 
@@ -163,7 +126,7 @@ function showMovies(movies) {
     const img = document.createElement("img");
     const h2 = document.createElement("h2");
     const span = document.createElement("span");
-    img.setAttribute("src", `${IMAGES_URL}/w154${movie.poster_path}`);
+    img.setAttribute("src", `${IMAGES_URL}/w300${movie.poster_path}`);
     h2.textContent = movie.title;
     h2.setAttribute("class", "movie__name");
     span.textContent = new Date(movie.release_date).getFullYear();
@@ -176,7 +139,21 @@ function showMovies(movies) {
   $movies_container.appendChild($list);
 }
 
-//showStudios();
+let showtrailer = (id) => {
+  console.log(id);
+  let div = document.createElement("div");
+  div.className = "trailer__content";
+  div.innerHTML = `
+    <span class="close_trailer">X</span>
+    <iframe class="trailer__player" width="420" height="315"
+    src="https://www.youtube.com/embed/${id}">
+    </iframe>
+  `;
+  body.appendChild(div);
+  const close_trailer = document.querySelector(".close_trailer");
+  close_trailer.addEventListener("click", () => {
+    body.removeChild(div);
+  });
+};
+
 getMovies("movie", ANIMATION_MOVIES_IDS);
-//getMoviesReleasedInThisYear(ANIMATION_MOVIES_IDS);
-//getMostPopularTVShow(ANIMATION_MOVIES_IDS);

@@ -1,6 +1,6 @@
 .highlight {
   width: 100%;
-  height: 85vh;
+  height: 520px;
   background-blend-mode: darken;
   color: white;
 
@@ -9,6 +9,11 @@
     flex-direction: column;
     align-items: center;
     padding: 80px 10px 0px 10px;
+
+    .highlight__contentPoster {
+      width: 154px;
+      border-radius: 10px;
+    }
 
     .highlight__info {
       display: flex;
@@ -55,6 +60,7 @@
         display: inline-flex;
         align-items: center;
         font-size: 16px;
+        cursor: pointer;
       }
     }
   }
@@ -63,7 +69,7 @@
 @media screen and (min-width: 600px) {
   .highlight {
     display: flex;
-    height: 75vh;
+    height: 550px;
 
     .highlight__content {
       flex-direction: row;
@@ -72,10 +78,13 @@
       align-self: center;
       gap: 20px;
 
+      .highlight__contentPoster {
+        width: 185px;
+      }
+
       .highlight__info {
         display: flex;
         flex-direction: column;
-        // justify-content: center;
         align-items: flex-start;
 
         .highlight__releasedYear {
@@ -86,10 +95,87 @@
           font-size: 36px;
         }
 
-        .highlight__overview,
-        .highlight__additionalInfo {
+        .highlight__gender {
+          font-size: 16px;
+        }
+
+        .highlight__overview {
           display: block;
+          max-width: 300px;
+          text-align: justify;
+          line-height: normal;
           margin-top: 15px;
+          display: -webkit-box;
+          -webkit-line-clamp: 4;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+        .highlight__additionalInfo {
+          display: flex;
+          align-items: center;
+          margin-top: 15px;
+
+          .highlight__duration {
+            display: flex;
+            align-items: center;
+            img {
+              width: 24px;
+            }
+          }
+          .highlight__rate {
+            margin-left: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .highlight {
+    .highlight__content {
+      .highlight__contentPoster {
+        width: 255px;
+      }
+      .highlight__info {
+        .highlight__releasedYear {
+          margin-top: 15px;
+          font-size: 18px;
+        }
+
+        .highlight__title {
+          font-size: 42px;
+          margin-top: 15px;
+        }
+
+        .highlight__gender {
+          font-size: 20px;
+        }
+
+        .highlight__overview {
+          max-width: 400px;
+          margin-top: 20px;
+          font-size: 20px;
+        }
+
+        .highlight__additionalInfo {
+          margin-top: 20px;
+
+          .highlight__duration {
+            font-size: 20px;
+            img {
+              width: 24px;
+            }
+          }
+          .highlight__rate {
+            font-size: 20px;
+          }
+        }
+
+        .highlight__btn {
+          margin-top: 25px;
+          padding: 15px 20px;
+          font-size: 22px;
         }
       }
     }
