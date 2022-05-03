@@ -32,8 +32,9 @@
 
   .movie__list {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
-    overflow-x: scroll;
   }
 
   .movie {

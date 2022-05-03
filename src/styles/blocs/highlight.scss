@@ -7,52 +7,91 @@
   .highlight__content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 70px 10px 0px 10px;
+    padding: 80px 10px 0px 10px;
 
-    .highlight__releasedYear {
-      margin-top: 15px;
-    }
-
-    .highlight__title {
-      font-size: 32px;
-      text-align: center;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-
-    .highlight__genders {
+    .highlight__info {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       justify-content: center;
-      margin-top: 15px;
-    }
-
-    .highlight__gender {
-      font-size: 12px;
-    }
-
-    .highlight__overview {
-      display: none;
-    }
-
-    .highlight__additionalInfo {
-      display: none;
-    }
-
-    .highlight__btn {
-      margin-top: 15px;
-      background-color: #ea5e6c;
-      border: none;
-      border-radius: 50px;
-      color: white;
-      padding: 8px 10px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-flex;
       align-items: center;
-      font-size: 16px;
+
+      .highlight__releasedYear {
+        margin-top: 15px;
+      }
+
+      .highlight__title {
+        font-size: 32px;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+
+      .highlight__genders {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 15px;
+      }
+
+      .highlight__gender {
+        font-size: 12px;
+      }
+
+      .highlight__overview,
+      .highlight__additionalInfo {
+        display: none;
+      }
+
+      .highlight__btn {
+        margin-top: 15px;
+        background-color: #ea5e6c;
+        border: none;
+        border-radius: 50px;
+        color: white;
+        padding: 8px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .highlight {
+    display: flex;
+    height: 75vh;
+
+    .highlight__content {
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 0 50px;
+      align-self: center;
+      gap: 20px;
+
+      .highlight__info {
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        align-items: flex-start;
+
+        .highlight__releasedYear {
+          margin-top: 0px;
+        }
+
+        .highlight__title {
+          font-size: 36px;
+        }
+
+        .highlight__overview,
+        .highlight__additionalInfo {
+          display: block;
+          margin-top: 15px;
+        }
+      }
     }
   }
 }

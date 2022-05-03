@@ -14,6 +14,9 @@ const $highlight = document.querySelector(".highlight");
 import horlogeIcon from "../assets/icons/horloge.svg";
 import playIcon from "../assets/icons/play.png";
 
+// movies variables
+const $movies_container = document.querySelector(".movies__container");
+
 //Toggle searchbar
 $searchIcon.addEventListener("click", () => {
   $searxhInput.classList.toggle("active");
@@ -58,7 +61,7 @@ let handleMovies = (movies) => {
     return;
   }
   showHighlight(movies.results[0].id);
-  //showMovies(movies, 1);
+  showMovies(movies);
 };
 
 let showHighlight = (movieId) => {
@@ -75,6 +78,7 @@ let showHighlight = (movieId) => {
     $highlight.innerHTML = `
     <div class="highlight__content">
         <img src="${IMAGES_URL}/w154${movie.poster_path}" alt="${movie.title}">
+        <div class="highlight__info">
         <span class="highlight__releasedYear">
         ${new Date(movie.release_date).getFullYear()}
         </span>
@@ -92,11 +96,11 @@ let showHighlight = (movieId) => {
         <buttton class="highlight__btn"> 
           <img src="${playIcon}" alt="play icon">  Bande annonce
         </buttton>
+        </div>
       </div>`;
   });
 };
 
-const $movies_container = document.querySelectorAll(".movies__container");
 const $studios = document.querySelector(".studios");
 
 const compagnies = [
@@ -149,19 +153,7 @@ let showStudios = function () {
   });
 };
 
-function getMoviesReleasedInThisYear(genderId) {
-  let year = new Date().getFullYear();
-  fetch(
-    `${API_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genderId}&primary_release_year=${year}`
-  )
-    .then((response) => response.json())
-    .then((response) => showMovies(response, 0));
-}
-
-function showMovies(movies, i) {
-  let $title = document.createElement("h2");
-  $title.textContent = "Animation";
-
+function showMovies(movies) {
   let $list = document.createElement("div");
   $list.setAttribute("class", "movie__list");
 
@@ -171,7 +163,7 @@ function showMovies(movies, i) {
     const img = document.createElement("img");
     const h2 = document.createElement("h2");
     const span = document.createElement("span");
-    img.setAttribute("src", `${IMAGES_URL}${movie.poster_path}`);
+    img.setAttribute("src", `${IMAGES_URL}/w154${movie.poster_path}`);
     h2.textContent = movie.title;
     h2.setAttribute("class", "movie__name");
     span.textContent = new Date(movie.release_date).getFullYear();
@@ -179,11 +171,9 @@ function showMovies(movies, i) {
     div.appendChild(img);
     div.appendChild(h2);
     div.appendChild(span);
-
     $list.appendChild(div);
   });
-  $movies_container[i].appendChild($title);
-  $movies_container[i].appendChild($list);
+  $movies_container.appendChild($list);
 }
 
 //showStudios();
