@@ -5,3 +5,16 @@
 @import url("blocs/highlight.scss");
 @import url("blocs/movies.scss");
 @import url("blocs/trailerVideo.scss");
+
+footer {
+  background-color: #050a1b;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  p {
+    font-size: 36px;
+    font-weight: bold;
+  }
+}
