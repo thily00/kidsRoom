@@ -1,52 +1,12 @@
 @import "vendors/reset.scss";
 @import "config/variables.scss";
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 45px;
-  padding: 10px;
-  background-color: var(--primary-bg-color);
-
-  .logo {
-    color: var(--white);
-  }
-}
-nav {
-  display: flex;
-  align-items: center;
-
-  .searchBar {
-    width: 200px;
-    padding: 10px;
-    background: #ffffff3b;
-    border: none;
-  }
-
-  .searchBar::placeholder {
-    color: var(--white);
-  }
-
-  ul {
-    display: flex;
-    li {
-      margin-left: 10px;
-      .nav__icons {
-        width: 24px;
-      }
-    }
-  }
-}
-
-.highlight {
-  height: 75vh;
-  background-size: cover;
-  background-position: center;
-}
+@import url("blocs/header.scss");
+@import url("blocs/highlight.scss");
 
 .studios {
   display: flex;
+  display: none;
   justify-content: space-between;
   align-items: center;
   background-color: var(--primary-bg-color);
@@ -72,8 +32,9 @@ nav {
 
   .movie__list {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
-    overflow-x: scroll;
   }
 
   .movie {
