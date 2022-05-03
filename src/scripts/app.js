@@ -1,3 +1,24 @@
+const $navbar = document.querySelector("header nav");
+const $searchIcon = document.querySelector(".nav__searchIcon");
+const $searxhInput = document.querySelector(".nav__searchBar");
+
+//Toggle searchbar
+$searchIcon.addEventListener("click", () => {
+  $searxhInput.classList.toggle("active");
+});
+
+window.addEventListener("scroll", () => {
+  if (window.innerWidth >= 600) {
+    if (window.scrollY >= 33) {
+      $navbar.style.background = "#121f44";
+      $navbar.style.boxShadow = " 3px 1px 5px 1px #040727";
+    } else {
+      $navbar.style.background = "transparent";
+      $navbar.style.boxShadow = "none";
+    }
+  }
+});
+
 import * as studios from "../assets/logos/*.png";
 
 const API_URL = "https://api.themoviedb.org/3";
@@ -95,10 +116,12 @@ let handleMovies = (movies) => {
 };
 
 let showHighlight = function (movie) {
-  $highlight.style.backgroundImage = `
-    linear-gradient(to bottom, #f5f6fc00, #000321),url(
-        https://image.tmdb.org/t/p/w1280${movie.backdrop_path}
-    )`;
+  // $highlight.style.backgroundImage = `
+  //   linear-gradient(to bottom, #f5f6fc00, #000321),url(
+  //       https://image.tmdb.org/t/p/w1280${movie.backdrop_path}
+  //   )`;
+
+  $highlight.style.background = `rgba(18,31,68,0.7) url( https://image.tmdb.org/t/p/w1280${movie.backdrop_path} )`;
   $highlight.innerHTML = `
     <div class="highlight__content">
             <h1>${movie.original_title}</h1>;
