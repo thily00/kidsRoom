@@ -9,9 +9,11 @@
   }
 
   .movie {
-    width: calc(100vw / 3);
+    width: calc(100vw / 3) + 10vw;
     height: auto;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: -1;
     img {
       width: 100%;
       height: 100%;
@@ -26,10 +28,29 @@
     margin-top: 10px;
     margin-bottom: 5px;
     font-size: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .movie__releaseDate {
     color: gray;
+  }
+
+  .movie_voteAverage {
+    color: #a1651e;
+    width: 34px;
+    height: 34px;
+    background: #fec72a;
+    border-radius: 51px;
+    justify-content: center;
+    padding: 10px;
+    font-weight: 500;
+    display: flex;
+    position: absolute;
+    bottom: 5px;
+    right: 4px;
   }
 }
 
@@ -63,7 +84,7 @@
     padding: 50px 32px;
 
     .movie {
-      width: calc(100vw / 4);
+      width: calc(100vw / 4) + 2vw;
     }
   }
 }
@@ -74,6 +95,10 @@
 
     .movie {
       width: calc(100vw / 5);
+      margin-bottom: 70px;
+    }
+    .movie__name {
+      font-size: 14px;
     }
   }
 }
@@ -82,6 +107,10 @@
   .movies__container {
     .movie {
       width: calc(100vw / 6);
+      margin-bottom: 80px;
+    }
+    .movie__name {
+      font-size: 16px;
     }
   }
 }
