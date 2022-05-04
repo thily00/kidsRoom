@@ -33,14 +33,12 @@ window.addEventListener("scroll", () => {
 });
 
 let showStudios = function () {
-  console.log(compagnies);
   compagnies.data.forEach(function (compagnie) {
     let studio = document.createElement("a");
     studio.setAttribute("href", `/compagny/${compagnie.compagnieId}`);
     studio.textContent = compagnie.compagnyName;
     $studiosDropdown.appendChild(studio);
   });
-  console.log($studiosDropdown);
 };
 
 showStudios();
