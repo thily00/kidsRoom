@@ -8,6 +8,7 @@ let currentCategorie = "movie";
 import "./header";
 
 const body = document.querySelector("body");
+const $navMenuItem = document.querySelectorAll(".nav__menuItem");
 
 //highlight Variables
 const $highlight = document.querySelector(".highlight");
@@ -165,6 +166,14 @@ let showtrailer = (id) => {
     body.removeChild(div);
   });
 };
+
+$navMenuItem[0].addEventListener("click", () => {
+  setCategorie("movie");
+});
+
+$navMenuItem[1].addEventListener("click", () => {
+  setCategorie("tv");
+});
 
 let setCategorie = (categorie) => {
   currentCategorie = categorie;

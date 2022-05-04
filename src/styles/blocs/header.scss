@@ -2,7 +2,7 @@ header {
   position: fixed;
   top: 0;
   width: 100vw;
-  height: 50px;
+  height: 70px;
 
   nav {
     display: flex;
@@ -17,7 +17,11 @@ header {
       justify-content: flex-start;
       .nav__logo {
         color: var(--white);
+        margin-top: 10px;
         margin-left: 5px;
+        img {
+          width: 100px;
+        }
       }
       .nav__menu {
         display: flex;
@@ -121,6 +125,7 @@ header {
   border: none;
   background: transparent;
   margin-left: 0;
+  font-family: "Poppins", sans-serif;
 }
 
 @media screen and (min-width: 600px) {
@@ -147,6 +152,7 @@ header {
           width: auto;
           height: auto;
           transform: translateX(0);
+          margin-left: 20px;
           .close_btn {
             display: none;
           }
