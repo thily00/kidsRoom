@@ -11,8 +11,23 @@ header {
     padding: 10px;
     height: 100%;
 
-    .nav__logo {
-      color: var(--white);
+    .nav__left {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      .nav__logo {
+        color: var(--white);
+      }
+      ul {
+        display: flex;
+        align-items: center;
+        li {
+          color: white;
+          font-size: 16px;
+          cursor: pointer;
+          margin-left: 10px;
+        }
+      }
     }
 
     .nav__searchIcon {
@@ -49,6 +64,40 @@ header {
 .nav__background {
   background-color: var(--primary-bg-color);
   box-shadow: 3px 1px 5px 1px #040727;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropbtn {
+  color: #fff;
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 16px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  margin-left: 0;
 }
 
 @media screen and (min-width: 600px) {

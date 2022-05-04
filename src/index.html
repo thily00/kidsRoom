@@ -16,7 +16,31 @@
   <body>
     <header>
       <nav>
-        <span class="nav__logo">POPCORN</span>
+        <div class="nav__left">
+          <span class="nav__logo">POPCORN</span>
+          <ul>
+            <li class="dropdown" onclick="setCategorie('movie')">
+              <button class="dropbtn">Films</button>
+              <div class="dropdown-content">
+                <a href="">Les plus récents</a>
+                <a href="">Les plus populaires</a>
+                <a href="">Les mieux notés</a>
+              </div>
+            </li>
+            <li class="dropdown" onclick="setCategorie('tv')">
+              <button class="dropbtn">Émissions de télévision</button>
+              <div class="dropdown-content">
+                <a href="">Les plus récentes</a>
+                <a href="">Les plus populaires</a>
+                <a href="">Les mieux notés</a>
+              </div>
+            </li>
+            <li class="studios dropdown">
+              <button class="dropbtn">Studios d'animation</button>
+              <div class="dropdown-content"></div>
+            </li>
+          </ul>
+        </div>
         <img
           class="nav__searchIcon"
           src="./assets/icons/seach30.svg"
@@ -38,9 +62,27 @@
     </header>
 
     <section class="highlight"></section>
-    <section class="filter"></section>
+    <!-- <section class="filter">
+      <div class="custom-select" style="width: 200px">
+        <select>
+          <option value="0">Trier par:</option>
+          <option value="1">Populaire</option>
+          <option value="2">Les mieux notés</option>
+          <option value="3">Les plus récents</option>
+        </select>
+      </div>
+      <div class="custom-select" style="width: 200px">
+        <select>
+          <option value="0">production de:</option>
+          <option value="1">Pixar</option>
+          <option value="2">Les mieux notés</option>
+          <option value="3">Les plus récents</option>
+        </select>
+      </div>
+      <hr />
+    </section> -->
     <section class="movies__container"></section>
-
+    <div class="pagination"></div>
     <footer>
       <p>POPCORN</p>
     </footer>
