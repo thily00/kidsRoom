@@ -3,7 +3,20 @@ const $navbar = document.querySelector("header nav");
 const $searchIcon = document.querySelector(".nav__searchIcon");
 const $searxhInput = document.querySelector(".nav__searchBar");
 const $studiosDropdown = document.querySelector(".studios .dropdown-content");
+const $menuIcon = document.querySelector(".menuIcon");
+const $closeIcon = document.querySelector(".close_btn");
+const $menu = document.querySelector(".nav__menu");
 const compagnies = require("../assets/compagnie.json");
+
+//open menu
+$menuIcon.addEventListener("click", () => {
+  $menu.classList.add("mobile__menu");
+});
+
+//close menu
+$closeIcon.addEventListener("click", () => {
+  $menu.classList.remove("mobile__menu");
+});
 
 //Toggle searchbar
 $searchIcon.addEventListener("click", () => {
