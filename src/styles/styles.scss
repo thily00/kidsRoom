@@ -12,13 +12,12 @@ body {
 
 footer {
   background-color: #050a1b;
-  height: 150px;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
-  p {
-    font-size: 36px;
-    font-weight: bold;
+  img {
+    width: 150px;
   }
 }
