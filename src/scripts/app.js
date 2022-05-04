@@ -42,7 +42,6 @@ let getMovie = async (categorie, id) => {
 };
 
 let handleMovies = (movies) => {
-  console.log(movies);
   if (movies.total_results === 0) {
     return;
   }
@@ -52,7 +51,6 @@ let handleMovies = (movies) => {
 
 let showHighlight = (movieId) => {
   getMovie(currentCategorie, movieId).then((movie) => {
-    console.log(movie);
     $highlight.style.background = `rgba(18,31,68,0.7) url( ${IMAGES_URL}/w1280${movie.backdrop_path} )`;
     $highlight.style.backgroundPosition = "center";
     $highlight.style.backgroundSize = "cover";
@@ -153,7 +151,6 @@ let handlePagination = (page, total_pages) => {
 };
 
 let showtrailer = (id) => {
-  console.log(id);
   let div = document.createElement("div");
   div.className = "trailer__content";
   div.innerHTML = `
