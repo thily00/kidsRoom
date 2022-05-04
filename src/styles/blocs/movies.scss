@@ -12,6 +12,8 @@
     width: calc(100vw / 3) + 10vw;
     height: auto;
     margin-bottom: 60px;
+    position: relative;
+    z-index: -1;
     img {
       width: 100%;
       height: 100%;
@@ -34,6 +36,21 @@
 
   .movie__releaseDate {
     color: gray;
+  }
+
+  .movie_voteAverage {
+    color: #a1651e;
+    width: 34px;
+    height: 34px;
+    background: #fec72a;
+    border-radius: 51px;
+    justify-content: center;
+    padding: 10px;
+    font-weight: 500;
+    display: flex;
+    position: absolute;
+    bottom: 5px;
+    right: 4px;
   }
 }
 

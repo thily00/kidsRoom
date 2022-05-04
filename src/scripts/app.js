@@ -130,14 +130,18 @@ function showMovies(movies) {
     const img = document.createElement("img");
     const h2 = document.createElement("h2");
     const span = document.createElement("span");
+    const vote = document.createElement("span");
     img.setAttribute("src", `${IMAGES_URL}/w300${movie.poster_path}`);
     h2.textContent = movie.original_title || movie.original_name;
     h2.setAttribute("class", "movie__name");
     span.textContent = getYears(movie);
     span.setAttribute("class", "movie__releaseDate");
+    vote.textContent = movie.vote_average;
+    vote.setAttribute("class", "movie_voteAverage");
     div.appendChild(img);
     div.appendChild(h2);
     div.appendChild(span);
+    div.appendChild(vote);
     $list.appendChild(div);
   });
   $movies_container.appendChild($list);
