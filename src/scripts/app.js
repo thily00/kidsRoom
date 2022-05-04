@@ -8,6 +8,7 @@ let currentCategorie = "movie";
 import "./header";
 
 const body = document.querySelector("body");
+const $navMenuItem = document.querySelectorAll(".nav__menuItem");
 
 //highlight Variables
 const $highlight = document.querySelector(".highlight");
@@ -49,8 +50,19 @@ let handleMovies = (movies) => {
   showMovies(movies);
 };
 
+let getYears = (movie) => {
+  let date;
+  if (movie.release_date) {
+    date = new Date(movie.release_date).getFullYear();
+  } else {
+    date = new Date(movie.first_air_date).getFullYear();
+  }
+  return date;
+};
+
 let showHighlight = (movieId) => {
   getMovie(currentCategorie, movieId).then((movie) => {
+    console.log(movie);
     $highlight.style.background = `rgba(18,31,68,0.7) url( ${IMAGES_URL}/w1280${movie.backdrop_path} )`;
     $highlight.style.backgroundPosition = "center";
     $highlight.style.backgroundSize = "cover";
@@ -60,9 +72,18 @@ let showHighlight = (movieId) => {
     });
 
     let duration = (runtime) => {
-      let nHours = Math.floor(runtime / 60);
-      let nMin = runtime % 60;
-      return `${nHours}h : ${nMin} mn`;
+      if (runtime) {
+        let nHours = Math.floor(runtime / 60);
+        let nMin = runtime % 60;
+        return `
+          <span class="highlight__duration">
+          <img src="${horlogeIcon}" alt="horloge icon"> 
+          ${nHours}h : ${nMin} mn
+        </span>
+        `;
+      } else {
+        return "";
+      }
     };
 
     $highlight.innerHTML = `
@@ -72,18 +93,17 @@ let showHighlight = (movieId) => {
     }" alt="${movie.title}">
         <div class="highlight__info">
         <span class="highlight__releasedYear">
-        ${new Date(movie.release_date).getFullYear()}
+        ${getYears(movie)}
         </span>
-        <h1 class="highlight__title">${movie.original_title}</h1>
+        <h1 class="highlight__title">${
+          movie.original_title || movie.original_name
+        }</h1>
         <div class="highlight__genders">
           ${genders}
         </div>
         <P class="highlight__overview">${movie.overview}</P>
         <div class="highlight__additionalInfo">
-          <span class="highlight__duration">
-            <img src="${horlogeIcon}" alt="horloge icon"> 
-             ${duration(movie.runtime)}
-          </span>
+          ${duration(movie.runtime)}
           <span class="highlight__rate">TMDB : ${movie.vote_average}</span>
         </div>
         <buttton class="highlight__btn"> 
@@ -111,9 +131,9 @@ function showMovies(movies) {
     const h2 = document.createElement("h2");
     const span = document.createElement("span");
     img.setAttribute("src", `${IMAGES_URL}/w300${movie.poster_path}`);
-    h2.textContent = movie.title;
+    h2.textContent = movie.original_title || movie.original_name;
     h2.setAttribute("class", "movie__name");
-    span.textContent = new Date(movie.release_date).getFullYear();
+    span.textContent = getYears(movie);
     span.setAttribute("class", "movie__releaseDate");
     div.appendChild(img);
     div.appendChild(h2);
@@ -165,6 +185,14 @@ let showtrailer = (id) => {
     body.removeChild(div);
   });
 };
+
+$navMenuItem[0].addEventListener("click", () => {
+  setCategorie("movie");
+});
+
+$navMenuItem[1].addEventListener("click", () => {
+  setCategorie("tv");
+});
 
 let setCategorie = (categorie) => {
   currentCategorie = categorie;

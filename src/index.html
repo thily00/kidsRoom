@@ -23,24 +23,10 @@
           /></span>
           <ul class="nav__menu">
             <span class="close_btn">X</span>
-            <li class="dropdown" onclick="setCategorie('movie')">
-              <button class="dropbtn">Films</button>
-              <div class="dropdown-content">
-                <a href="">Les plus récents</a>
-                <a href="">Les plus populaires</a>
-                <a href="">Les mieux notés</a>
-              </div>
-            </li>
-            <li class="dropdown" onclick="setCategorie('tv')">
-              <button class="dropbtn">Émissions de télévision</button>
-              <div class="dropdown-content">
-                <a href="">Les plus récentes</a>
-                <a href="">Les plus populaires</a>
-                <a href="">Les mieux notés</a>
-              </div>
-            </li>
+            <li class="nav__menuItem">Films</li>
+            <li class="nav__menuItem">Émissions TV</li>
             <li class="studios dropdown">
-              <button class="dropbtn">Studios d'animation</button>
+              <button class="dropbtn">Studios</button>
               <div class="dropdown-content"></div>
             </li>
           </ul>
@@ -88,7 +74,7 @@
     <section class="movies__container"></section>
     <div class="pagination"></div>
     <footer>
-      <p>POPCORN</p>
+      <img src="./assets/logos/logo.png" alt="logo" />
     </footer>
 
     <script type="module" src="scripts/app.js" defer></script>
