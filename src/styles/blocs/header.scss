@@ -10,8 +10,6 @@ header {
     align-items: center;
     padding: 10px;
     height: 100%;
-    background-color: var(--primary-bg-color);
-    box-shadow: 3px 1px 5px 1px #040727;
 
     .nav__logo {
       color: var(--white);
@@ -48,11 +46,14 @@ header {
   }
 }
 
+.nav__background {
+  background-color: var(--primary-bg-color);
+  box-shadow: 3px 1px 5px 1px #040727;
+}
+
 @media screen and (min-width: 600px) {
   header {
     nav {
-      background-color: transparent;
-      box-shadow: none;
       padding: 10px 50px;
 
       .nav__searchIcon {

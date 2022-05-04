@@ -26,14 +26,10 @@ $searchIcon.addEventListener("click", () => {
 
 //handle navbar background color on different screen
 window.addEventListener("scroll", () => {
-  if (window.innerWidth >= 600) {
-    if (window.scrollY >= 33) {
-      $navbar.style.background = "#121f44";
-      $navbar.style.boxShadow = " 3px 1px 5px 1px #040727";
-    } else {
-      $navbar.style.background = "transparent";
-      $navbar.style.boxShadow = "none";
-    }
+  if (window.scrollY >= 33) {
+    $navbar.classList.add("nav__background");
+  } else {
+    $navbar.classList.remove("nav__background");
   }
 });
 
@@ -102,7 +98,7 @@ let showHighlight = (movieId) => {
             <img src="${horlogeIcon}" alt="horloge icon"> 
              ${duration(movie.runtime)}
           </span>
-          <span class="highlight__rate">TMDB : ${movie.vote_average}/10</span>
+          <span class="highlight__rate">TMDB : ${movie.vote_average}</span>
         </div>
         <buttton class="highlight__btn"> 
           <img src="${playIcon}" alt="play icon">  Bande annonce
