@@ -198,6 +198,9 @@ let setCategorie = (categorie) => {
   currentCategorie = categorie;
   current_page = 1;
   getMovies(currentCategorie, ANIMATION_MOVIES_IDS);
+  if (window.innerWidth < 600) {
+    document.querySelector(".nav__menu").classList.remove("mobile__menu");
+  }
 };
 
 getMovies(currentCategorie, ANIMATION_MOVIES_IDS);
