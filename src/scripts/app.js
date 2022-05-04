@@ -166,7 +166,7 @@ let showtrailer = (id) => {
   });
 };
 
-setCategorie = (categorie) => {
+let setCategorie = (categorie) => {
   currentCategorie = categorie;
   current_page = 1;
   getMovies(currentCategorie, ANIMATION_MOVIES_IDS);
