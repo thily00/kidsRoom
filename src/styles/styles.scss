@@ -6,6 +6,10 @@
 @import url("blocs/movies.scss");
 @import url("blocs/trailerVideo.scss");
 
+body {
+  background-color: var(--primary-bg-color);
+}
+
 footer {
   background-color: #050a1b;
   height: 150px;

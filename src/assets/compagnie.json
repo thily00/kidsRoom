@@ -1,27 +1,29 @@
-const compagnies = [
+{
+  "data": [
     {
-      compagnyName: "Walt Disney Pictures",
-      compagnieId: "2",
-      imageUrl: "disney",
+      "compagnyName": "Walt Disney Pictures",
+      "compagnieId": "2",
+      "imageUrl": "disney"
     },
     {
-      compagnyName: "Pixar",
-      compagnieId: "3",
-      imageUrl: "pixar",
+      "compagnyName": "Pixar",
+      "compagnieId": "3",
+      "imageUrl": "pixar"
     },
     {
-      compagnyName: "Marvel Entertainment",
-      compagnieId: "7505",
-      imageUrl: "marvel",
+      "compagnyName": "Marvel Entertainment",
+      "compagnieId": "7505",
+      "imageUrl": "marvel"
     },
     {
-      compagnyName: "DreamWorks Animation",
-      compagnieId: "521",
-      imageUrl: "dreamorks",
+      "compagnyName": "DreamWorks Animation",
+      "compagnieId": "521",
+      "imageUrl": "dreamorks"
     },
     {
-      compagnyName: "Warner Bros. Animation",
-      compagnieId: "2785",
-      imageUrl: "warnerbros",
-    },
-  ];
+      "compagnyName": "Warner Bros. Animation",
+      "compagnieId": "2785",
+      "imageUrl": "warnerbros"
+    }
+  ]
+}
