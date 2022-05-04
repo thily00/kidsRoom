@@ -1,5 +1,5 @@
 {
-  "name": "popcornapp",
+  "name": "kidsroom",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thily00/popcornApp.git"
+    "url": "git+https://github.com/thily00/kidsRoom.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/thily00/popcornApp/issues"
+    "url": "https://github.com/thily00/kidsRoom/issues"
   },
-  "homepage": "https://github.com/thily00/popcornApp#readme",
+  "homepage": "https://github.com/thily00/kidsRoom#readme",
   "devDependencies": {
     "@parcel/resolver-glob": "^2.5.0",
     "@parcel/transformer-sass": "^2.5.0",
