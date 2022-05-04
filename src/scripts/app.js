@@ -130,8 +130,8 @@ let handlePagination = (page, total_pages) => {
    ${page} / ${total_pages}
   <span class="nextBtn"><img src="${RightArrow}" alt="next"></span>
   `;
-  $prevBtn = document.querySelector(".prevBtn");
-  $nextBtn = document.querySelector(".nextBtn");
+  let $prevBtn = document.querySelector(".prevBtn");
+  let $nextBtn = document.querySelector(".nextBtn");
 
   $prevBtn.addEventListener("click", () => {
     if (current_page > 1) {
