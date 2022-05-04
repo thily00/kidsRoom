@@ -41,6 +41,7 @@
 
       .highlight__gender {
         font-size: 12px;
+        margin-left: 5px;
       }
 
       .highlight__overview,
@@ -95,8 +96,12 @@
           font-size: 36px;
         }
 
+        .highlight__genders {
+          margin-top: 10px;
+        }
+
         .highlight__gender {
-          font-size: 16px;
+          font-size: 14px;
         }
 
         .highlight__overview {
@@ -109,17 +114,19 @@
           -webkit-line-clamp: 4;
           -webkit-box-orient: vertical;
           overflow: hidden;
+          font-size: 14px;
         }
         .highlight__additionalInfo {
           display: flex;
           align-items: center;
           margin-top: 15px;
+          font-size: 14px;
 
           .highlight__duration {
             display: flex;
             align-items: center;
             img {
-              width: 24px;
+              width: 18px;
             }
           }
           .highlight__rate {
@@ -144,31 +151,35 @@
         }
 
         .highlight__title {
-          font-size: 42px;
+          font-size: 38px;
+          margin-top: 15px;
+        }
+
+        .highlight__genders {
           margin-top: 15px;
         }
 
         .highlight__gender {
-          font-size: 20px;
+          font-size: 18px;
         }
 
         .highlight__overview {
           max-width: 400px;
           margin-top: 20px;
-          font-size: 20px;
+          font-size: 18px;
         }
 
         .highlight__additionalInfo {
           margin-top: 20px;
 
           .highlight__duration {
-            font-size: 20px;
+            font-size: 18px;
             img {
               width: 24px;
             }
           }
           .highlight__rate {
-            font-size: 20px;
+            font-size: 18px;
           }
         }
 

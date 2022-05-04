@@ -74,7 +74,7 @@ let showHighlight = (movieId) => {
     $highlight.style.backgroundSize = "cover";
 
     let genders = movie.genres.map((genre) => {
-      return `<span class="highlight__gender"> ${genre.name}</span>`;
+      return `<span class="highlight__gender">${genre.name} </span>`;
     });
 
     let duration = (runtime) => {
@@ -100,9 +100,9 @@ let showHighlight = (movieId) => {
         <div class="highlight__additionalInfo">
           <span class="highlight__duration">
             <img src="${horlogeIcon}" alt="horloge icon"> 
-            ${duration(movie.runtime)}
+             ${duration(movie.runtime)}
           </span>
-          <span class="highlight__rate">TMDB:${movie.vote_average}/10</span>
+          <span class="highlight__rate">TMDB : ${movie.vote_average}/10</span>
         </div>
         <buttton class="highlight__btn"> 
           <img src="${playIcon}" alt="play icon">  Bande annonce
