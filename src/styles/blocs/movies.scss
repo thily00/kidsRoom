@@ -9,9 +9,9 @@
   }
 
   .movie {
-    width: calc(100vw / 3);
+    width: calc(100vw / 3) + 10vw;
     height: auto;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
     img {
       width: 100%;
       height: 100%;
@@ -26,6 +26,10 @@
     margin-top: 10px;
     margin-bottom: 5px;
     font-size: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .movie__releaseDate {
@@ -63,7 +67,7 @@
     padding: 50px 32px;
 
     .movie {
-      width: calc(100vw / 4);
+      width: calc(100vw / 4) + 2vw;
     }
   }
 }
@@ -74,6 +78,10 @@
 
     .movie {
       width: calc(100vw / 5);
+      margin-bottom: 70px;
+    }
+    .movie__name {
+      font-size: 14px;
     }
   }
 }
@@ -82,6 +90,10 @@
   .movies__container {
     .movie {
       width: calc(100vw / 6);
+      margin-bottom: 80px;
+    }
+    .movie__name {
+      font-size: 16px;
     }
   }
 }
