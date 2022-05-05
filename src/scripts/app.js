@@ -62,7 +62,6 @@ let getYears = (movie) => {
 
 let showHighlight = (movieId) => {
   getMovie(currentCategorie, movieId).then((movie) => {
-    console.log(movie);
     $highlight.style.background = `rgba(18,31,68,0.7) url( ${IMAGES_URL}/w1280${movie.backdrop_path} )`;
     $highlight.style.backgroundPosition = "center";
     $highlight.style.backgroundSize = "cover";
@@ -142,6 +141,9 @@ function showMovies(movies) {
     div.appendChild(h2);
     div.appendChild(span);
     div.appendChild(vote);
+    div.addEventListener("click", () => {
+      location.href = `/details.html?categorie=${currentCategorie}&id=${movie.id}`;
+    });
     $list.appendChild(div);
   });
   $movies_container.appendChild($list);
