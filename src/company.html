@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/styles.scss" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav__left">
+          <img class="menuIcon" src="./assets/icons/menu.png" alt="" />
+          <a href="/" class="nav__logo"
+            ><img src="./assets/logos/logo.png" alt="logo"
+          /></a>
+          <ul class="nav__menu">
+            <span class="close_btn">X</span>
+            <li class="nav__menuItem">Films</li>
+            <li class="nav__menuItem">Émissions TV</li>
+            <li class="studios dropdown">
+              <button class="dropbtn">Studios</button>
+              <div class="dropdown-content"></div>
+            </li>
+          </ul>
+        </div>
+        <img
+          class="nav__searchIcon"
+          src="./assets/icons/seach30.svg"
+          alt="searchIcon"
+        />
+        <div class="nav__searchBar">
+          <input
+            class="searchBar__input"
+            placeholder="Rechercher un film, Tv Shows"
+            type="text"
+          />
+          <img
+            class="searchBar__inputIcon"
+            src="./assets/icons/seach30.svg"
+            alt="searchIcon"
+          />
+        </div>
+      </nav>
+    </header>
+    <section class="company"></section>
+    <section class="movies__container"></section>
+    <script src="./scripts/company.js" defer></script>
+  </body>
+</html>

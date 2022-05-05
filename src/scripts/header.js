@@ -1,7 +1,8 @@
 //navbar variables
 const $navbar = document.querySelector("header nav");
 const $searchIcon = document.querySelector(".nav__searchIcon");
-const $searxhInput = document.querySelector(".nav__searchBar");
+const $searchInput = document.querySelector(".nav__searchBar");
+const $searchValue = document.querySelector(".searchBar__input");
 const $studiosDropdown = document.querySelector(".studios .dropdown-content");
 const $menuIcon = document.querySelector(".menuIcon");
 const $closeIcon = document.querySelector(".close_btn");
@@ -20,7 +21,7 @@ $closeIcon.addEventListener("click", () => {
 
 //Toggle searchbar
 $searchIcon.addEventListener("click", () => {
-  $searxhInput.classList.toggle("active");
+  $searchInput.classList.toggle("active");
 });
 
 //handle navbar background color on different screen
@@ -35,7 +36,10 @@ window.addEventListener("scroll", () => {
 let showStudios = function () {
   compagnies.data.forEach(function (compagnie) {
     let studio = document.createElement("a");
-    studio.setAttribute("href", `/compagny/${compagnie.compagnieId}`);
+    studio.setAttribute(
+      "href",
+      `/company.html?company-id=${compagnie.compagnieId}`
+    );
     studio.textContent = compagnie.compagnyName;
     $studiosDropdown.appendChild(studio);
   });
