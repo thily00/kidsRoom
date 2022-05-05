@@ -77,7 +77,11 @@ let showHighlight = () => {
         </div>`;
     const $highlight__btn = document.querySelector(".highlight__btn");
     $highlight__btn.addEventListener("click", () => {
-      showtrailer(movie.videos.results[0].key);
+      if (movie.videos.results.length > 0) {
+        showtrailer(movie.videos.results[0].key);
+      } else {
+        alert("la bande d'annonce n'est pas encore disponible !");
+      }
     });
   });
 };
