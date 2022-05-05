@@ -4,6 +4,7 @@ const API_KEY = "ac8ffc0eba4faf52fa1a6b66f2ea86e0";
 
 const $company = document.querySelector(".company");
 const $movies_container = document.querySelector(".movies__container");
+let currentCategorie = "movie";
 
 let id = parseInt(
   new URLSearchParams(window.location.search).get("company-id")
@@ -31,7 +32,6 @@ let handleCompany = (response) => {
     <span class="company__name">${response.name}</span>
     <a href="${response.homepage}" target="_blank" class="company__url">Site web</a>
   `;
-  console.log(response);
 };
 
 function showMovies(movies) {
@@ -58,6 +58,9 @@ function showMovies(movies) {
     div.appendChild(h2);
     div.appendChild(span);
     div.appendChild(vote);
+    div.addEventListener("click", () => {
+      location.href = `/details.html?categorie=${currentCategorie}&id=${movie.id}`;
+    });
     $list.appendChild(div);
   });
   $movies_container.appendChild($list);
