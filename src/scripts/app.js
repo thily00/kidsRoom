@@ -5,7 +5,7 @@ const API_KEY = "ac8ffc0eba4faf52fa1a6b66f2ea86e0";
 const ANIMATION_MOVIES_IDS = "16,10751";
 let currentCategorie = "movie";
 
-import "./header";
+// import "./header";
 
 const body = document.querySelector("body");
 const $navMenuItem = document.querySelectorAll(".nav__menuItem");
