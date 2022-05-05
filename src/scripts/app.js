@@ -3,12 +3,16 @@ const API_URL = "https://api.themoviedb.org/3";
 const IMAGES_URL = "https://image.tmdb.org/t/p";
 const API_KEY = "ac8ffc0eba4faf52fa1a6b66f2ea86e0";
 const ANIMATION_MOVIES_IDS = "16,10751";
-let currentCategorie = "movie";
 
-// import "./header";
+//get current categorie
+const url = window.location.href;
+const strs = url.split("/");
+let currentCategorie = strs.at(-1);
+if (currentCategorie == "") {
+  currentCategorie = "movie";
+}
 
 const body = document.querySelector("body");
-const $navMenuItem = document.querySelectorAll(".nav__menuItem");
 
 //highlight Variables
 const $highlight = document.querySelector(".highlight");
@@ -70,10 +74,10 @@ let showHighlight = (movieId) => {
       return `<span class="highlight__gender">${genre.name} </span>`;
     });
 
-    let duration = (runtime) => {
-      if (runtime) {
-        let nHours = Math.floor(runtime / 60);
-        let nMin = runtime % 60;
+    let duration = () => {
+      if (movie.runtime) {
+        let nHours = Math.floor(movie.runtime / 60);
+        let nMin = movie.runtime % 60;
         return `
           <span class="highlight__duration">
           <img src="${horlogeIcon}" alt="horloge icon"> 
@@ -102,7 +106,7 @@ let showHighlight = (movieId) => {
         </div>
         <P class="highlight__overview">${movie.overview}</P>
         <div class="highlight__additionalInfo">
-          ${duration(movie.runtime)}
+          ${duration()}
           <span class="highlight__rate">Vote : ${movie.vote_average} / 10</span>
         </div>
         <buttton class="highlight__btn"> 
@@ -112,7 +116,11 @@ let showHighlight = (movieId) => {
       </div>`;
     const $highlight__btn = document.querySelector(".highlight__btn");
     $highlight__btn.addEventListener("click", () => {
-      showtrailer(movie.videos.results[0].key);
+      if (movie.videos.results.length > 0) {
+        showtrailer(movie.videos.results[0].key);
+      } else {
+        alert("la bande d'annonce n'est pas encore disponible !");
+      }
     });
   });
 };
@@ -190,23 +198,6 @@ let showtrailer = (id) => {
   close_trailer.addEventListener("click", () => {
     body.removeChild(div);
   });
-};
-
-$navMenuItem[0].addEventListener("click", () => {
-  setCategorie("movie");
-});
-
-$navMenuItem[1].addEventListener("click", () => {
-  setCategorie("tv");
-});
-
-let setCategorie = (categorie) => {
-  currentCategorie = categorie;
-  current_page = 1;
-  getMovies(currentCategorie, ANIMATION_MOVIES_IDS);
-  if (window.innerWidth < 600) {
-    document.querySelector(".nav__menu").classList.remove("mobile__menu");
-  }
 };
 
 getMovies(currentCategorie, ANIMATION_MOVIES_IDS);

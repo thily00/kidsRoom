@@ -46,6 +46,12 @@ header {
           color: white;
           cursor: pointer;
         }
+        .nav__menuItem {
+          a {
+            color: white;
+            text-decoration: none;
+          }
+        }
         li {
           color: white;
           font-size: 22px;
