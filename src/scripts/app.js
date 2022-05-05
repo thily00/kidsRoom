@@ -3,9 +3,14 @@ const API_URL = "https://api.themoviedb.org/3";
 const IMAGES_URL = "https://image.tmdb.org/t/p";
 const API_KEY = "ac8ffc0eba4faf52fa1a6b66f2ea86e0";
 const ANIMATION_MOVIES_IDS = "16,10751";
-let currentCategorie = "movie";
 
-// import "./header";
+//get current categorie
+const url = window.location.href;
+const strs = url.split("/");
+let currentCategorie = strs.at(-1);
+if (currentCategorie == "") {
+  currentCategorie = "movie";
+}
 
 const body = document.querySelector("body");
 const $navMenuItem = document.querySelectorAll(".nav__menuItem");
