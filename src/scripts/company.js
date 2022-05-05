@@ -18,7 +18,7 @@ let getCompany = () => {
 
 let getMovies = (categorie) => {
   fetch(
-    `${API_URL}/discover/movie?api_key=${API_KEY}&with_companies=${id}&language=fr&sort_by=popularity.desc`
+    `${API_URL}/discover/movie?api_key=${API_KEY}&with_companies=${id}&language=fr&sort_by=release_date.desc`
   )
     .then((response) => response.json())
     .then((response) => showMovies(response));
@@ -47,7 +47,14 @@ function showMovies(movies) {
     const h2 = document.createElement("h2");
     const span = document.createElement("span");
     const vote = document.createElement("span");
-    img.setAttribute("src", `${IMAGES_URL}/w300${movie.poster_path}`);
+    if (movie.poster_path != null) {
+      img.setAttribute("src", `${IMAGES_URL}/w300${movie.poster_path}`);
+    } else {
+      img.setAttribute(
+        "src",
+        `https://jonchere.fr/wp-content/themes/myx/assets/images/no-image/No-Image-Found-400x264.png`
+      );
+    }
     h2.textContent = movie.original_title || movie.original_name;
     h2.setAttribute("class", "movie__name");
     span.textContent = getYears(movie);
