@@ -18,9 +18,9 @@
       <nav>
         <div class="nav__left">
           <img class="menuIcon" src="./assets/icons/menu.png" alt="" />
-          <span class="nav__logo"
-            ><img src="./assets/logos/logo.png" alt="logo"
-          /></span>
+          <a href="/" class="nav__logo">
+            <img src="./assets/logos/logo.png" alt="logo" />
+          </a>
           <ul class="nav__menu">
             <span class="close_btn">X</span>
             <li class="nav__menuItem">Films</li>
@@ -52,31 +52,12 @@
     </header>
 
     <section class="highlight"></section>
-    <!-- <section class="filter">
-      <div class="custom-select" style="width: 200px">
-        <select>
-          <option value="0">Trier par:</option>
-          <option value="1">Populaire</option>
-          <option value="2">Les mieux notés</option>
-          <option value="3">Les plus récents</option>
-        </select>
-      </div>
-      <div class="custom-select" style="width: 200px">
-        <select>
-          <option value="0">production de:</option>
-          <option value="1">Pixar</option>
-          <option value="2">Les mieux notés</option>
-          <option value="3">Les plus récents</option>
-        </select>
-      </div>
-      <hr />
-    </section> -->
     <section class="movies__container"></section>
     <div class="pagination"></div>
     <footer>
       <img src="./assets/logos/logo.png" alt="logo" />
     </footer>
-
+    <script type="module" src="scripts/header.js"></script>
     <script type="module" src="scripts/app.js" defer></script>
   </body>
 </html>
