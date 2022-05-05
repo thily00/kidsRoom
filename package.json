@@ -4,8 +4,8 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "parcel src/index.html src/company.html src/details.html",
-    "build": "parcel build src/index.html src/company.html src/details.html"
+    "serve": "parcel *.html",
+    "build": "parcel build *.html"
   },
   "repository": {
     "type": "git",
