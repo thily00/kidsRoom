@@ -104,7 +104,7 @@ let showHighlight = (movieId) => {
         <P class="highlight__overview">${movie.overview}</P>
         <div class="highlight__additionalInfo">
           ${duration(movie.runtime)}
-          <span class="highlight__rate">TMDB : ${movie.vote_average}</span>
+          <span class="highlight__rate">Vote : ${movie.vote_average} / 10</span>
         </div>
         <buttton class="highlight__btn"> 
           <img src="${playIcon}" alt="play icon">  Bande annonce
