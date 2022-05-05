@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "parcel src/index.html src/company.html",
-    "build": "parcel build src/index.html"
+    "build": "parcel build src/index.html src/company.html"
   },
   "repository": {
     "type": "git",
