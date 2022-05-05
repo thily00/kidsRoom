@@ -18,7 +18,7 @@ let getCompany = () => {
 
 let getMovies = (categorie) => {
   fetch(
-    `${API_URL}/discover/movie?api_key=${API_KEY}&with_companies=${id}&language=fr&sort_by=popularity.desc`
+    `${API_URL}/discover/movie?api_key=${API_KEY}&with_companies=${id}&language=fr&sort_by=release_date.desc`
   )
     .then((response) => response.json())
     .then((response) => showMovies(response));
