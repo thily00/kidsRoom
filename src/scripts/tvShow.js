@@ -20,7 +20,7 @@ let current_page = 1;
 
 let getMovies = (genderId) => {
   fetch(
-    `${API_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genderId}&page=${current_page}&language=fr&sort_by=popularity.desc`
+    `${API_URL}/discover/tv?api_key=${API_KEY}&with_genres=${genderId}&page=${current_page}&language=fr&sort_by=popularity.desc`
   )
     .then((response) => response.json())
     .then((response) => handleMovies(response));
@@ -28,7 +28,7 @@ let getMovies = (genderId) => {
 
 let getMovie = async (id) => {
   return await fetch(
-    `${API_URL}/movie/${id}?api_key=${API_KEY}&language=fr&append_to_response=videos`
+    `${API_URL}/tv/${id}?api_key=${API_KEY}&language=fr&append_to_response=videos`
   )
     .then((response) => {
       return response.json();
@@ -150,7 +150,7 @@ function showMovies(movies) {
     div.appendChild(span);
     div.appendChild(vote);
     div.addEventListener("click", () => {
-      location.href = `/details.html?categorie=movie&id=${movie.id}`;
+      location.href = `/details.html?categorie=tv&id=${movie.id}`;
     });
     $list.appendChild(div);
   });
