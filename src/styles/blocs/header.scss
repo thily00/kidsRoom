@@ -87,6 +87,32 @@ header {
       .searchBar__inputIcon {
         display: none;
       }
+
+      .search__box {
+        display: none;
+        width: 220px;
+        background: white;
+        height: 230px;
+        overflow: auto;
+        padding: 10px;
+        margin-top: 5px;
+        .search__boxItem {
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          margin-bottom: 10px;
+          .search__boxItemImage {
+            width: 60px;
+          }
+          .search__boxItemName {
+            margin-left: 5px;
+            font-size: 12px;
+          }
+        }
+      }
+      .search__box.active {
+        display: block;
+      }
     }
 
     .nav__searchBar.active {
@@ -211,6 +237,12 @@ header {
           transform: translateY(-50%);
           right: 4px;
         }
+      }
+      .search__box {
+        position: absolute;
+        top: 41px;
+        padding: 10px;
+        width: 320px !important;
       }
     }
   }
